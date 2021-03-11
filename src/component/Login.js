@@ -24,7 +24,7 @@ export default class Login extends Component {
     event.preventDefault();
     try {
       const res = await fetch(
-        "http://localhost:3004/login?q=" + this.state.name
+        "http://localhost:3000/login?q=" + this.state.name
       );
       const data = await res.json();
       if (data.length > 0) {

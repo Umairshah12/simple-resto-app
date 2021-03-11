@@ -18,7 +18,7 @@ export default class ResturantList extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:3004/resturant").then((response) => {
+    fetch("http://localhost:3000/resturant").then((response) => {
       response.json().then((res) => {
         this.setState({ list: res });
       });
@@ -31,7 +31,7 @@ export default class ResturantList extends Component {
     this.setState({
       list: data,
     });
-    fetch("http://localhost:3004/resturant/" + id, {
+    fetch("http://localhost:3000/resturant/" + id, {
       method: "DELETE",
     }).then((response) => {
       response.json().then((res) => {

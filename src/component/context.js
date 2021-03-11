@@ -27,7 +27,7 @@ export default class ProductProvider extends Component {
   }
 
   fetchHotel = (id) => {
-    fetch("http://localhost:3004/resturant/" + id).then((response) => {
+    fetch("http://localhost:3000/resturant/" + id).then((response) => {
       response
         .json()
         .then((res) => {
@@ -48,7 +48,7 @@ export default class ProductProvider extends Component {
 
   update = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3004/resturant/" + this.state.id, {
+    fetch("http://localhost:3000/resturant/" + this.state.id, {
       method: "PUT",
       headers: {
         "Content-type": "application/json",
@@ -73,7 +73,7 @@ export default class ProductProvider extends Component {
     // console.log(event);
     event.preventDefault();
     try {
-      await fetch("http://localhost:3004/resturant", {
+      await fetch("http://localhost:3000/resturant", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -89,10 +89,9 @@ export default class ProductProvider extends Component {
       toast("New Resturant Added Successfully!", {
         type: "success",
       });
-      this.setState((prev) => ({
+      this.setState({
         ...initialState,
-        list: prev.list,
-      }));
+      });
     } catch (error) {
       toast("Opps! An error occured", {
         type: "error",
@@ -107,7 +106,7 @@ export default class ProductProvider extends Component {
   search(key) {
     // console.log(key);
     this.setState({ lastSearch: key });
-    fetch("http://localhost:3004/resturant?q=" + key).then((response) => {
+    fetch("http://localhost:3000/resturant?q=" + key).then((response) => {
       response.json().then((res) => {
         // console.log(res);
         if (res.length > 0) {
@@ -134,7 +133,7 @@ export default class ProductProvider extends Component {
       list: data,
     });
     console.log(data);
-    fetch("http://localhost:3004/resturant/" + id, {
+    fetch("http://localhost:3000/resturant/" + id, {
       method: "DELETE",
     }).then((response) => {
       response.json().then((res) => {
